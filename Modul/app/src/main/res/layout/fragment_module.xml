@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/moduleNumberText1"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/module_number_label"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/module_number1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/module_number_hint"
+        android:minHeight="48dp"
+        android:textColorHint="@color/black" />
+
+    <TextView
+        android:id="@+id/dateInText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/module_dateIn_label"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
+
+    <Button
+        android:id="@+id/dateIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/module_dateIn_hint"
+        android:minHeight="48dp"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:id="@+id/Edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        tools:text="Edit" />
+
+    <Button
+        android:id="@+id/Search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        tools:text="Search" />
+
+    <Button
+        android:id="@+id/Preview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/preview" />
+
+</LinearLayout>

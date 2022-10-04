@@ -1,0 +1,116 @@
+<resources>
+    <string name="app_name">Module</string>
+    <string name="module_number_hint">Enter number of module</string>
+    <string name="module_number_label">Number</string>
+    <string name="module_station_hint">Enter station</string>
+    <string name="module_station_label">Station</string>
+    <string name="module_dateIn_hint">Enter date of delivery</string>
+    <string name="module_dateIn_label">date of delivery</string>
+    <string name="module_military_label">Military</string>
+    <string name="module_input_control_hint">Enter input data</string>
+    <string name="module_input_control_label">Input data</string>
+    <string name="edit">Edit</string>
+    <string name="search">Search</string>
+    <string name="delete">delete</string>
+    <string name="write">write</string>
+    <string name="clear">Clear</string>
+    <string name="enter_module_station">Enter module station</string>
+    <string name="station">Station</string>
+    <string name="enter_input_control_data">Enter input control data</string>
+    <string name="inputControl">inputControl</string>
+    <string name="repair">Repair</string>
+    <string name="preview">Preview</string>
+    <string name="comments">Comments</string>
+
+    <string-array name="filterComponents">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="PSComponents">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="amplifierA3Components">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="ALCA4components">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="ControlBoardA5Components">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="AmplifierA6Components">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="CapacitorBankA7Components">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="PreAmplifierA8Components">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="IndicationUnitA9Components">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="SocketsPlugsComponents">
+        <item>+</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+</resources>

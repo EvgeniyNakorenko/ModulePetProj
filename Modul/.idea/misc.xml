@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/nakor/AndroidStudioProjects/Modul/app/src/main/res/layout/fragment_module.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/nakor/AndroidStudioProjects/Modul/app/src/main/res/layout/fragment_repair.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/nakor/module/Modul/app/src/main/res/layout/fragment_module.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/nakor/module/Modul/app/src/main/res/layout/fragment_repair.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Modul/app/src/main/res/layout/activity_main.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Modul/app/src/main/res/layout/filter_text.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Modul/app/src/main/res/layout/fragment_module.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Modul/app/src/main/res/layout/fragment_repair.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Modul/app/src/main/res/layout/qwerty.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Modul/app/src/main/res/layout/simple_spinner_dropdown_item.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Modul/app/src/main/res/layout/simple_spinner_item.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/user/AppData/Local/Android/sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.2786458333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

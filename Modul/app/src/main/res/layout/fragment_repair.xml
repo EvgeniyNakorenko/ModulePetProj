@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/moduleNumberText2"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/module_number_label"
+        android:textColor="@color/black"
+        android:textColorLink="@color/teal_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/dateIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/module_dateIn_hint"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moduleNumberText2" />
+
+    <EditText
+        android:id="@+id/module_station"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/enter_module_station"
+        android:minHeight="48dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/isMilitary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateIn" />
+
+    <EditText
+        android:id="@+id/inputControl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_input_control_data"
+        android:minHeight="48dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/module_station" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/clear"
+        app:layout_constraintStart_toEndOf="@+id/write"
+        tools:text="Delete" />
+
+    <Button
+        android:id="@+id/write"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/write"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/delete"
+        app:layout_constraintStart_toEndOf="@+id/delete"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Write" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/delete" />
+
+    <Spinner
+        android:id="@+id/filterSpinner"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:entries="@array/filterComponents"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/powerSupplySpinner"
+        app:layout_constraintTop_toBottomOf="@+id/inputControl" />
+
+
+    <Spinner
+        android:id="@+id/powerSupplySpinner"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/amplifier_A3Spinner"
+        app:layout_constraintTop_toBottomOf="@+id/filterSpinner" />
+
+    <Spinner
+        android:id="@+id/amplifier_A3Spinner"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ALCSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/powerSupplySpinner" />
+
+    <Spinner
+        android:id="@+id/ALCSpinner"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/control_board"
+        app:layout_constraintTop_toBottomOf="@+id/amplifier_A3Spinner" />
+
+    <Spinner
+        android:id="@+id/control_board"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/amplifier_A6"
+        app:layout_constraintTop_toBottomOf="@+id/ALCSpinner" />
+
+    <Spinner
+        android:id="@+id/amplifier_A6"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/capacitor_bank"
+        app:layout_constraintTop_toBottomOf="@+id/control_board" />
+
+    <Spinner
+        android:id="@+id/capacitor_bank"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/capacitorBankText"
+        app:layout_constraintTop_toBottomOf="@+id/amplifier_A6" />
+
+    <Spinner
+        android:id="@+id/preAmplifier"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/capacitor_bank"
+        app:layout_constraintTop_toBottomOf="@+id/capacitor_bank" />
+
+    <Spinner
+        android:id="@+id/indicationUnit"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/preAmplifier"
+        app:layout_constraintTop_toBottomOf="@+id/preAmplifier" />
+
+    <Spinner
+        android:id="@+id/sockets_plugs_connectors"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/indicationUnit"
+        app:layout_constraintTop_toBottomOf="@+id/indicationUnit" />
+
+    <TextView
+        android:id="@+id/comments"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/comments"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sockets_plugs_connectors" />
+
+    <CheckBox
+        android:id="@+id/isMilitary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/module_military_label"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/inputControl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/module_station"
+        app:layout_constraintTop_toBottomOf="@+id/dateIn" />
+
+    <TextView
+        android:id="@+id/filterText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Filter A1"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/filterSpinner"
+        app:layout_constraintEnd_toEndOf="@+id/powerSupplyText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/filterSpinner" />
+
+    <TextView
+        android:id="@+id/powerSupplyText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Power Supply A2"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/powerSupplySpinner"
+        app:layout_constraintEnd_toEndOf="@+id/AmplifierA3Text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/powerSupplySpinner" />
+
+    <TextView
+        android:id="@+id/AmplifierA3Text"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Amplifier A3"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/amplifier_A3Spinner"
+        app:layout_constraintEnd_toEndOf="@+id/ALCText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/amplifier_A3Spinner" />
+
+    <TextView
+        android:id="@+id/ALCText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="ALC A4"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/ALCSpinner"
+        app:layout_constraintEnd_toEndOf="@+id/controlBoardText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ALCSpinner" />
+
+    <TextView
+        android:id="@+id/controlBoardText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Control board A5"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/control_board"
+        app:layout_constraintEnd_toStartOf="@+id/control_board"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/control_board" />
+
+    <TextView
+        android:id="@+id/amplifierA6Text"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Amplifier A6"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/amplifier_A6"
+        app:layout_constraintEnd_toEndOf="@+id/controlBoardText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/amplifier_A6" />
+
+    <TextView
+        android:id="@+id/capacitorBankText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capacitor bank A7"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/capacitor_bank"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/capacitor_bank" />
+
+    <TextView
+        android:id="@+id/preAmplifierText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Preamplifier A8"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/preAmplifier"
+        app:layout_constraintEnd_toEndOf="@+id/capacitorBankText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/preAmplifier" />
+
+    <TextView
+        android:id="@+id/indicationUnitText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Indication Unit A9"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/indicationUnit"
+        app:layout_constraintEnd_toEndOf="@+id/preAmplifierText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/indicationUnit" />
+
+    <TextView
+        android:id="@+id/textView7"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sockets plugs"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/sockets_plugs_connectors"
+        app:layout_constraintEnd_toEndOf="@+id/indicationUnitText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sockets_plugs_connectors" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
