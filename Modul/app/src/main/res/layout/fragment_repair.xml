@@ -31,7 +31,6 @@
         android:textColor="@color/black"
         android:textColorHighlight="@color/black"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moduleNumberText2" />
 
@@ -351,6 +350,20 @@
         app:layout_constraintEnd_toEndOf="@+id/indicationUnitText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/sockets_plugs_connectors" />
+
+    <TextView
+        android:id="@+id/dateOfDeliveryText"
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="date of delivery"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/dateIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dateIn"
+        app:layout_constraintTop_toTopOf="@+id/dateIn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,4 +60,11 @@
         android:layout_height="wrap_content"
         android:text="@string/preview" />
 
+    <TextView
+        android:id="@+id/searchText"
+        style="?android:listSeparatorTextViewStyle"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

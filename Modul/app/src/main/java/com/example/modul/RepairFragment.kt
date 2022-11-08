@@ -1,18 +1,26 @@
 package com.example.modul
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+
+const val DIALOG_DATE1 = "DialogDate"
+const val REQUEST_DATE1 = 0
+
+class RepairFragment: Fragment(),DatePickerFragment.Callbacks {
 
 
-class RepairFragment: Fragment() {
+    private lateinit var database: FirebaseFirestore
 
     private var inputText: String? = ""
+    private var inputText2: String? = ""
+
+    private lateinit var dateOfDeliveryText: TextView
 
     private lateinit var module: Module
     private lateinit var moduleNumberText2: TextView
@@ -31,7 +39,7 @@ class RepairFragment: Fragment() {
     private lateinit var indicationUnit: Spinner
     private lateinit var sockets_plugs_connectors: Spinner
     private lateinit var comments: TextView
-    private lateinit var write: Button
+    private lateinit var writeButton: Button
     private lateinit var deleteButton: Button
     private lateinit var clearButton :Button
     private var filterList = "Changed elements:"
@@ -51,16 +59,22 @@ class RepairFragment: Fragment() {
             R.layout.fragment_repair,container, false)
 
         inputText = arguments?.getString("input_txt")
+        inputText2 = arguments?.getString("input_txt2")
+
 
         moduleNumberText2 = rootView.findViewById(R.id.moduleNumberText2) as TextView
 
         moduleNumberText2.text = inputText
 
+
         dateIn = rootView.findViewById(R.id.dateIn) as Button
-        dateIn.apply {
-            text = module.dateIn.toString()
-            isEnabled = false
-        }
+
+        dateOfDeliveryText = rootView.findViewById(R.id.dateOfDeliveryText)
+
+        dateOfDeliveryText.text = inputText2
+
+
+
         moduleStation = rootView.findViewById(R.id.module_station) as EditText
         inputControl = rootView.findViewById(R.id.inputControl) as EditText
         isMilitary = rootView.findViewById(R.id.isMilitary) as CheckBox
@@ -75,21 +89,19 @@ class RepairFragment: Fragment() {
         indicationUnit = rootView.findViewById(R.id.indicationUnit) as Spinner
         sockets_plugs_connectors = rootView.findViewById(R.id.sockets_plugs_connectors) as Spinner
         comments = rootView.findViewById(R.id.comments) as TextView
-        write = rootView.findViewById(R.id.write) as Button
+        writeButton = rootView.findViewById(R.id.write) as Button
         deleteButton = rootView.findViewById(R.id.delete) as Button
         clearButton = rootView.findViewById(R.id.clear) as Button
 
-        return rootView
-    }
-
-    override fun onStart() {
-        super.onStart()
+        var isMilitaryChecked : Boolean = false
 
         isMilitary.setOnCheckedChangeListener{ _, isChecked ->
             if (isChecked){
+                isMilitaryChecked = true
                 moduleNumberText2.setBackgroundColor(
                     resources.getColor(R.color.yellow))
             }else{
+                isMilitaryChecked = false
                 moduleNumberText2.setBackgroundColor(
                     resources.getColor(android.R.color.primary_text_dark))
             }
@@ -106,12 +118,25 @@ class RepairFragment: Fragment() {
         indicationUnitA9Spinner()
         socketsPlugsA10Spinner()
 
-        deleteButton.setOnClickListener(){
-            val fragment = ModuleFragment()
-            fragmentManager?.beginTransaction()?.replace(
-                R.id.fragment_container,fragment)?.
-            addToBackStack(null)?.
-            commit()
+        database =FirebaseFirestore.getInstance()
+
+        deleteButton.setOnClickListener {
+
+            if (dateOfDeliveryText.text != "date of delivery"  ) {
+
+                database.collection("modul").document("${moduleNumberText2.text}")
+                    .collection("${dateOfDeliveryText.text}").document(
+                        "${moduleNumberText2.text}"
+                    ).get().addOnSuccessListener {
+                        it.reference.delete()
+
+                    }
+
+                val fragment = ModuleFragment()
+                fragmentManager?.beginTransaction()?.replace(
+                    R.id.fragment_container, fragment
+                )?.addToBackStack(null)?.commit()
+            }
         }
 
         clearButton.setOnClickListener {
@@ -119,7 +144,43 @@ class RepairFragment: Fragment() {
                 filterList = "Changed elements:"
                 comments.text = filterList.dropLast(1)
             }
+
+            dateOfDeliveryText.text="date of delivery"
+            moduleStation.text.clear()
+            isMilitary.isChecked =false
+            inputControl.text.clear()
         }
+
+        writeButton.setOnClickListener {
+
+            database.collection("modul").document("${moduleNumberText2.text}")
+                .collection("${dateOfDeliveryText.text}").document(
+                    "${moduleNumberText2.text}").set(mapOf(
+                    "input_control" to "${inputControl.text}",
+                    "module_station" to "${moduleStation.text}",
+                    "is_military" to isMilitaryChecked.toString(),
+                    "comments" to comments.text.toString(),
+                    "dateOfDelivery" to dateOfDeliveryText.text.toString()
+                ))
+        }
+
+        return rootView
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        dateIn.setOnClickListener {
+            DatePickerFragment.newInstance(module.dateOFDelivery).apply {
+                setTargetFragment(this@RepairFragment, REQUEST_DATE1)
+                show(this@RepairFragment.requireFragmentManager(), DIALOG_DATE1)
+            }
+        }
+    }
+
+    override fun onDateSelected(date: Date) {
+        module.dateOFDelivery = date
+        dateOfDeliveryText.text = android.text.format.DateFormat.format("yyyy-MM-dd ", date)
     }
 
     private fun filterA1Spinner(){

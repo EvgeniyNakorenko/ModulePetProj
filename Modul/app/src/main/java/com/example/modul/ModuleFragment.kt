@@ -8,14 +8,23 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Source
+import kotlinx.android.synthetic.main.fragment_module.*
 import java.util.*
 
-private const val DIALOG_DATE = "DialogDate"
-private const val REQUEST_DATE = 0
+const val DIALOG_DATE = "DialogDate"
+const val REQUEST_DATE = 0
 
 class ModuleFragment : Fragment(),DatePickerFragment.Callbacks {
 
+    private lateinit var database: FirebaseFirestore
+
+    private lateinit var searchText : TextView
+
     private lateinit var comm: Communicator
+
+    private lateinit var comm2: Communicator2
 
     private lateinit var moduleNumberText: TextView
     private lateinit var module: Module
@@ -46,19 +55,46 @@ class ModuleFragment : Fragment(),DatePickerFragment.Callbacks {
         searchButton = rootView.findViewById(R.id.Search) as Button
         previewButton =rootView.findViewById(R.id.Preview) as Button
 
+        searchText = rootView.findViewById(R.id.searchText) as TextView
+
         comm = requireActivity() as Communicator
+        comm2 = requireActivity() as Communicator2
 
         editButton.setOnClickListener(){
             if (moduleNumber.text.isNotEmpty()) {
                 moduleNumberText.text = moduleNumber.text
+
                 comm.passDataCom(moduleNumber.text.toString())
+
+                comm2.passDataCom2(dateInText.text.toString())
+
             }
         }
 
         previewButton.setOnClickListener(){
             if (moduleNumberText.text != "Number") {
                 moduleNumberText.text = moduleNumber.text
-                comm.passDataCom(moduleNumber.text.toString())
+
+            }
+        }
+
+        searchButton.setOnClickListener(){
+            if (moduleNumber.text.isNotEmpty()) {
+                moduleNumberText.text = moduleNumber.text
+
+                val docRef = database.collection(
+                    "modul").document("${moduleNumber.text}")
+
+                val source = Source.CACHE
+
+                docRef.get(source).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val document = task.result
+                        searchText.text = document?.data.toString()
+                    }  else {
+                        searchText.text = "no data"
+                    }
+                }
             }
         }
 
@@ -68,12 +104,8 @@ class ModuleFragment : Fragment(),DatePickerFragment.Callbacks {
     override fun onStart() {
         super.onStart()
 
-        searchButton.setOnClickListener(){
-            if (moduleNumber.text.isNotEmpty()) moduleNumberText.text = moduleNumber.text
-        }
-
         dateInButton.setOnClickListener(){
-            DatePickerFragment.newInstance(module.dateIn).apply {
+            DatePickerFragment.newInstance(module.dateOFDelivery).apply {
                 setTargetFragment(this@ModuleFragment, REQUEST_DATE)
                 show(this@ModuleFragment.requireFragmentManager(), DIALOG_DATE)
             }
@@ -81,7 +113,7 @@ class ModuleFragment : Fragment(),DatePickerFragment.Callbacks {
     }
 
     override fun onDateSelected(date: Date) {
-        module.dateIn = date
-        dateInText.text = date.toString()
+        module.dateOFDelivery = date
+        dateInText.text = android.text.format.DateFormat.format("yyyy-MM-dd ", date)
     }
 }
