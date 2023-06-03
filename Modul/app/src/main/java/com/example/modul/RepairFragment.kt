@@ -125,9 +125,7 @@ class RepairFragment: Fragment(),DatePickerFragment.Callbacks {
             if (dateOfDeliveryText.text != "date of delivery"  ) {
 
                 database.collection("modul").document("${moduleNumberText2.text}")
-                    .collection("${dateOfDeliveryText.text}").document(
-                        "${moduleNumberText2.text}"
-                    ).get().addOnSuccessListener {
+                    .get().addOnSuccessListener {
                         it.reference.delete()
 
                     }
@@ -153,15 +151,16 @@ class RepairFragment: Fragment(),DatePickerFragment.Callbacks {
 
         writeButton.setOnClickListener {
 
+            val modul = mapOf(
+                "input_control" to "${inputControl.text}",
+                "module_station" to "${moduleStation.text}",
+                "is_military" to isMilitaryChecked.toString(),
+                "comments" to comments.text.toString(),
+                "dateOfDelivery" to dateOfDeliveryText.text.toString()
+            )
+
             database.collection("modul").document("${moduleNumberText2.text}")
-                .collection("${dateOfDeliveryText.text}").document(
-                    "${moduleNumberText2.text}").set(mapOf(
-                    "input_control" to "${inputControl.text}",
-                    "module_station" to "${moduleStation.text}",
-                    "is_military" to isMilitaryChecked.toString(),
-                    "comments" to comments.text.toString(),
-                    "dateOfDelivery" to dateOfDeliveryText.text.toString()
-                ))
+                .set(modul )
         }
 
         return rootView

@@ -24,8 +24,6 @@ class ModuleFragment : Fragment(),DatePickerFragment.Callbacks {
 
     private lateinit var comm: Communicator
 
-    private lateinit var comm2: Communicator2
-
     private lateinit var moduleNumberText: TextView
     private lateinit var module: Module
     private lateinit var moduleNumber: EditText
@@ -58,15 +56,12 @@ class ModuleFragment : Fragment(),DatePickerFragment.Callbacks {
         searchText = rootView.findViewById(R.id.searchText) as TextView
 
         comm = requireActivity() as Communicator
-        comm2 = requireActivity() as Communicator2
 
         editButton.setOnClickListener(){
-            if (moduleNumber.text.isNotEmpty()) {
+            if (moduleNumber.text.isNotEmpty() && dateInText.text !="date of delivery") {
                 moduleNumberText.text = moduleNumber.text
 
-                comm.passDataCom(moduleNumber.text.toString())
-
-                comm2.passDataCom2(dateInText.text.toString())
+                comm.passDataCom(moduleNumber.text.toString(),dateInText.text.toString())
 
             }
         }
@@ -83,11 +78,11 @@ class ModuleFragment : Fragment(),DatePickerFragment.Callbacks {
                 moduleNumberText.text = moduleNumber.text
 
                 val docRef = database.collection(
-                    "modul").document("${moduleNumber.text}")
+                    "modul").document(
+                    "${moduleNumber.text}")
 
-                val source = Source.CACHE
 
-                docRef.get(source).addOnCompleteListener { task ->
+                docRef.get().addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val document = task.result
                         searchText.text = document?.data.toString()
